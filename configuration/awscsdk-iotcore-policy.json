@@ -1,0 +1,34 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "iot:Connect",
+      "Resource": "arn:aws:iot:REGION:ACCOUNT_ID:client/${iot:Connection.Thing.ThingName}"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "iot:Subscribe",
+      "Resource": [
+        "arn:aws:iot:REGION:ACCOUNT_ID:topicfilter/${iot:Connection.Thing.ThingName}/example/topic",
+        "arn:aws:iot:REGION:ACCOUNT_ID:topicfilter/all/device/telemetry"
+        ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": "iot:Receive",
+      "Resource": [
+        "arn:aws:iot:REGION:ACCOUNT_ID:topic/${iot:Connection.Thing.ThingName}/example/topic",
+        "arn:aws:iot:REGION:ACCOUNT_ID:topic/all/device/telemetry"
+        ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": "iot:Publish",
+      "Resource": [
+        "arn:aws:iot:REGION:ACCOUNT_ID:topic/${iot:Connection.Thing.ThingName}/example/topic",
+        "arn:aws:iot:REGION:ACCOUNT_ID:topic/all/device/telemetry"
+        ]
+    }
+  ]
+}
