@@ -17,7 +17,7 @@ git config --global credential.helper '!aws codecommit credential-helper $@'
 git config --global credential.UseHttpPath true
 
 mkdir -p ${HOME}/environment/cmake
-wget https://github.com/Kitware/CMake/releases/download/v3.21.4/cmake-3.21.4-linux-x86_64.sh
+wget -q https://github.com/Kitware/CMake/releases/download/v3.21.4/cmake-3.21.4-linux-x86_64.sh
 sh ./cmake-3.21.4-linux-x86_64.sh --skip-license --prefix=${HOME}/environment/cmake
 echo "export PATH=${HOME}/environment/cmake/bin:$PATH" >> ~/.bashrc
 rm cmake-3.21.4-linux-x86_64.sh
@@ -52,7 +52,7 @@ git commit -m"automation artifacts" configuration/awscsdk-buildspec-build.yml co
 git push
 
 cd ${basedir}
-mkdir ${basedir}/credentials
+mkdir -p ${basedir}/credentials
 mydevice=$(uuidgen)
 myapp-config/scripts/create-iot-credential.sh \
     -F \
