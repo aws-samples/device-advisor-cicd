@@ -968,6 +968,12 @@ Resources:
       InstanceType: t3.medium
       ImageId: amazonlinux-2-x86_64
       SubnetId: !Ref PubSubnetA
+      OwnerArn : 
+        !Join
+        - ''
+        -  - 'arn:aws:iam::'
+           - !Ref "AWS::AccountId"
+           - ':assumed-role/TeamRole/MasterKey'
       Tags: 
         - Key: SSMBootstrap
           Value: Active
